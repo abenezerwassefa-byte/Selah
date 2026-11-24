@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Selah | Presentation</title>
+
+    <link rel="stylesheet" href="{% static 'css/viewer.css' %}">
+</head>
+
+<body>
+
+    <main class="presentation-container" 
+    style="--slide-font: '{{ font|default:'Arial' }}';
+        --slide-font-size: {{ font_size|default:36 }}pt;
+        --slide-background:
+            {% if background == 'white' %}#ffffff
+            {% elif background == 'dark' %}#141419
+            {% else %}#000000{% endif %};
+        --slide-text-color:
+            {% if text_color == 'black' %}#000000
+            {% elif text_color == 'gold' %}#dcbe78
+            {% else %}#ffffff{% endif %};
+            "
+    >
+
+        <!-- Presentation Header -->
+        <header class="presentation-header">
+            <div class="brand">
+                <span class="brand-name">SELAH</span>
+                <span class="brand-divider">/</span>
+                <span class="presentation-label">PRESENTATION</span>
+            </div>
+
+            <button id="fullscreenBtn" class="fullscreen-btn">
+                Fullscreen
+            </button>
+        </header>
+
+
+        <!-- Slide Display -->
+        <section class="presentation-stage">
+
+            <div class="slide-wrapper" id="slideWrapper">
+
+                {% for slide in slides %}
+
+                    <div class="slide {% if forloop.first %}active{% endif %}">
+
+                        <p class="slide-text">{{ slide }}</p>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="slide active">
+                        <p class="slide-text">
+                            Your presentation will appear here.
+                        </p>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- Presentation Controls -->
+        <footer class="presentation-controls">
+
+            <button id="previousBtn" class="control-btn">
+                &#8592;
+                <span>Previous</span>
+            </button>
+
+            <div class="slide-indicator">
+                <span id="currentSlide">01</span>
+                <span class="indicator-divider">/</span>
+                <span id="totalSlides">01</span>
+            </div>
+
+            <button id="nextBtn" class="control-btn">
+                <span>Next</span>
+                &#8594;
+            </button>
+
+        </footer>
+
+    </main>
+
+    <script src="{% static 'css/viewer.js' %}"></script>
+
+</body>
+</html>

@@ -78,7 +78,7 @@
                     <div class="section-header">
                         <div>
                             <h4>Song Lyrics</h4>
-                            <p>Paste your lyrics and separate slides using ---</p>
+                            <p>Paste your complete song lyrics. Selah will organize them into slides.</p>
                         </div>
 
                         <span class="required">REQUIRED</span>
@@ -94,15 +94,13 @@
 Amazing grace, how sweet the sound
 That saved a wretch like me
 
----
-
 I once was lost, but now am found
 Was blind, but now I see"
                             required
                         ></textarea>
 
                         <div class="input-footer">
-                            <span>Use --- to indicate a new slide.</span>
+                            <span>Selah will determine the slide divisions automatically.</span>
                             <span id="character-count">0 characters</span>
                         </div>
 
@@ -172,22 +170,10 @@ Was blind, but now I see"
 
 
                     <!-- Submit -->
-                    <form method="POST" action="{% url 'generate_presentation' %}">
-
-                        {% csrf_token %}
-                                        
-                        <textarea
-                            name="lyrics"
-                            id="lyrics"
-                            placeholder="Paste your lyrics here..."
-                        ></textarea>
-                                        
+                    <div class="submit-section">
                         <button type="submit">
                             Generate Presentation
                         </button>
-                    
-                    </form>
-
                     </div>
 
                 </form>
