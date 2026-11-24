@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Selah | Dashboard</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <a href="#" class="logo">SELAH<span>.</span></a>
+
+                <button class="sidebar-toggle">☰</button>
+            </div>
+
+
+            <nav class="sidebar-navigation">
+
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">＋</span>
+                    New Presentation
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⌕</span>
+                    Search
+                </a>
+
+
+                <div class="nav-section">
+                    <span>WORKSPACE</span>
+                </div>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">▤</span>
+                    My Presentations
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">▦</span>
+                    Templates
+                </a>
+
+
+                <div class="sidebar-divider"></div>
+
+
+                <div class="nav-section">
+                    <span>PREFERENCES</span>
+                </div>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">?</span>
+                    Help & Support
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+                <div class="upgrade-card">
+                    <div>
+                        <h4>Make worship meaningful.</h4>
+                        <p>Create your next presentation.</p>
+                    </div>
+
+                    <a href="#" class="upgrade-link">→</a>
+                </div>
+
+
+                <div class="profile-section">
+
+                    <div class="profile-avatar">AW</div>
+
+                    <div class="profile-information">
+                        <h4>Abenezer Assefa</h4>
+                        <p>Personal Workspace</p>
+                    </div>
+
+                    <button class="profile-menu">⋮</button>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- TOP HEADER -->
+
+            <header class="top-header">
+
+                <div>
+                    <span class="workspace-label">PERSONAL WORKSPACE</span>
+                </div>
+
+                <div class="header-actions">
+                    <button class="notification-button">♧</button>
+                    <div class="header-avatar">AW</div>
+                </div>
+
+            </header>
+
+
+
+            <!-- WELCOME SECTION -->
+
+            <section class="welcome-section">
+
+                <p class="welcome-eyebrow">YOUR WORSHIP WORKSPACE</p>
+
+                <h1>
+                    Welcome back<span>.</span><br>
+                    What are we creating today?
+                </h1>
+
+                <p class="welcome-description">
+                    Create, organize, and present worship lyrics
+                    with clarity and simplicity.
+                </p>
+
+
+                <a href="{% url 'index' %}" class="create-button">
+                    <span>＋</span>
+                    Create a presentation
+                    <span class="button-arrow">→</span>
+                </a>
+
+            </section>
+
+
+
+            <!-- PROJECTS AND TEMPLATES -->
+
+            <section class="library-section">
+
+                <div class="library-header">
+
+                    <div class="library-tabs">
+
+                        <button class="tab-button active"
+                                data-tab="recent">
+                            Recent Projects
+                        </button>
+
+                        <button class="tab-button"
+                                data-tab="templates">
+                            Templates
+                        </button>
+
+                    </div>
+
+                    <a href="#" class="view-all-link">
+                        View all <span>↗</span>
+                    </a>
+
+                </div>
+
+
+
+                <!-- RECENT PROJECTS -->
+
+                <div class="tab-content active" id="recent">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Recent projects</h2>
+                            <p>Pick up where you left off.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="project-grid">
+
+
+                        <article class="project-card">
+
+                            <div class="project-preview preview-purple">
+                                <span class="preview-label">SELAH</span>
+
+                                <div class="preview-content">
+                                    <h3>Amazing Grace</h3>
+                                    <p>How sweet the sound</p>
+                                </div>
+
+                                <span class="slide-count">12 SLIDES</span>
+                            </div>
+
+                            <div class="project-information">
+                                <div>
+                                    <h3>Sunday Worship</h3>
+                                    <p>Edited recently</p>
+                                </div>
+
+                                <button class="card-menu">⋮</button>
+                            </div>
+
+                        </article>
+
+
+
+                        <article class="project-card">
+
+                            <div class="project-preview preview-black">
+                                <span class="preview-label">SELAH</span>
+
+                                <div class="preview-content">
+                                    <h3>Great Is Thy Faithfulness</h3>
+                                    <p>Morning by morning</p>
+                                </div>
+
+                                <span class="slide-count">8 SLIDES</span>
+                            </div>
+
+                            <div class="project-information">
+                                <div>
+                                    <h3>Midweek Fellowship</h3>
+                                    <p>Edited 2 days ago</p>
+                                </div>
+
+                                <button class="card-menu">⋮</button>
+                            </div>
+
+                        </article>
+
+
+
+                        <article class="project-card">
+
+                            <div class="project-preview preview-gold">
+                                <span class="preview-label">SELAH</span>
+
+                                <div class="preview-content">
+                                    <h3>Holy Forever</h3>
+                                    <p>All the angels cry</p>
+                                </div>
+
+                                <span class="slide-count">15 SLIDES</span>
+                            </div>
+
+                            <div class="project-information">
+                                <div>
+                                    <h3>Evening Service</h3>
+                                    <p>Edited 5 days ago</p>
+                                </div>
+
+                                <button class="card-menu">⋮</button>
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TEMPLATES -->
+
+                <div class="tab-content" id="templates">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Presentation templates</h2>
+                            <p>Start with a design that fits your service.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="project-grid">
+
+
+                        <article class="project-card">
+
+                            <div class="project-preview preview-purple">
+                                <span class="preview-label">SELAH</span>
+
+                                <div class="preview-content">
+                                    <h3>Modern Worship</h3>
+                                    <p>Clean and minimal</p>
+                                </div>
+
+                                <span class="slide-count">TEMPLATE</span>
+                            </div>
+
+                            <div class="project-information">
+                                <div>
+                                    <h3>Modern Worship</h3>
+                                    <p>Minimal · Purple</p>
+                                </div>
+
+                                <button class="template-arrow">→</button>
+                            </div>
+
+                        </article>
+
+
+
+                        <article class="project-card">
+
+                            <div class="project-preview preview-black">
+                                <span class="preview-label">SELAH</span>
+
+                                <div class="preview-content">
+                                    <h3>Classic Dark</h3>
+                                    <p>Timeless and elegant</p>
+                                </div>
+
+                                <span class="slide-count">TEMPLATE</span>
+                            </div>
+
+                            <div class="project-information">
+                                <div>
+                                    <h3>Classic Dark</h3>
+                                    <p>Minimal · Black</p>
+                                </div>
+
+                                <button class="template-arrow">→</button>
+                            </div>
+
+                        </article>
+
+
+
+                        <article class="project-card">
+
+                            <div class="project-preview preview-gold">
+                                <span class="preview-label">SELAH</span>
+
+                                <div class="preview-content">
+                                    <h3>Grace & Glory</h3>
+                                    <p>Warm and elegant</p>
+                                </div>
+
+                                <span class="slide-count">TEMPLATE</span>
+                            </div>
+
+                            <div class="project-information">
+                                <div>
+                                    <h3>Grace & Glory</h3>
+                                    <p>Elegant · Gold</p>
+                                </div>
+
+                                <button class="template-arrow">→</button>
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <footer class="dashboard-footer">
+                <span>SELAH © 2026</span>
+                <span>Built for worship.</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- TAB SWITCHING -->
+
+    <script>
+
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+
+            button.addEventListener('click', () => {
+
+                const target = button.dataset.tab;
+
+                tabButtons.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                button.classList.add('active');
+
+                document.getElementById(target).classList.add('active');
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

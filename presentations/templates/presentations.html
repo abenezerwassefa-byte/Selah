@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selah | Worship Presentations</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/presentations.css' %}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <h1>selah<span>.</span></h1>
+                <p>WORSHIP PRESENTATIONS</p>
+            </div>
+
+            <nav class="navigation">
+                <a href="#" class="nav-link active">
+                    <span>▦</span> Create Presentation
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>◷</span> Recent Presentations
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>⚙</span> Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Made for worship.</p>
+                <span>SELAH © 2026</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <p class="breadcrumb">WORKSPACE / CREATE</p>
+                    <h2>Create Presentation</h2>
+                </div>
+
+                <div class="user-profile">
+                    <div class="avatar">G</div>
+                    <span>Guest User</span>
+                </div>
+            </header>
+
+
+            <section class="workspace">
+
+                <div class="intro">
+                    <h3>Turn lyrics into slides.</h3>
+                    <p>
+                        Paste your worship lyrics below and Selah will
+                        transform them into a presentation ready for worship.
+                    </p>
+                </div>
+
+
+                <form method="POST" action="{% url 'generate_presentation' %}">
+
+                    {% csrf_token %}
+
+                    <!-- Lyrics Input -->
+                    <div class="section-header">
+                        <div>
+                            <h4>Song Lyrics</h4>
+                            <p>Paste your lyrics and separate slides using ---</p>
+                        </div>
+
+                        <span class="required">REQUIRED</span>
+                    </div>
+
+                    <div class="lyrics-container">
+
+                        <textarea
+                            name="lyrics"
+                            id="lyrics"
+                            placeholder="Paste your worship lyrics here...
+
+Amazing grace, how sweet the sound
+That saved a wretch like me
+
+---
+
+I once was lost, but now am found
+Was blind, but now I see"
+                            required
+                        ></textarea>
+
+                        <div class="input-footer">
+                            <span>Use --- to indicate a new slide.</span>
+                            <span id="character-count">0 characters</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Presentation Settings -->
+                    <div class="settings-section">
+
+                        <div class="section-header">
+                            <div>
+                                <h4>Presentation Settings</h4>
+                                <p>Customize the appearance of your slides.</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-grid">
+
+                            <div class="form-group">
+                                <label for="font">Font Family</label>
+
+                                <select name="font" id="font">
+                                    <option value="Arial">Arial</option>
+                                    <option value="Aptos">Aptos</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Calibri">Calibri</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="font-size">Font Size</label>
+
+                                <select name="font_size" id="font-size">
+                                    <option value="32">32 pt</option>
+                                    <option value="36" selected>36 pt</option>
+                                    <option value="40">40 pt</option>
+                                    <option value="44">44 pt</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="background">Background</label>
+
+                                <select name="background" id="background">
+                                    <option value="black">Black</option>
+                                    <option value="dark">Dark Gray</option>
+                                    <option value="white">White</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="text-color">Text Color</label>
+
+                                <select name="text_color" id="text-color">
+                                    <option value="white">White</option>
+                                    <option value="black">Black</option>
+                                    <option value="gold">Gold</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Submit -->
+                    <form method="POST" action="{% url 'generate_presentation' %}">
+
+                        {% csrf_token %}
+                                        
+                        <textarea
+                            name="lyrics"
+                            id="lyrics"
+                            placeholder="Paste your lyrics here..."
+                        ></textarea>
+                                        
+                        <button type="submit">
+                            Generate Presentation
+                        </button>
+                    
+                    </form>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+        const lyricsInput = document.getElementById("lyrics");
+        const characterCount = document.getElementById("character-count");
+
+        lyricsInput.addEventListener("input", function () {
+            characterCount.textContent =
+                `${lyricsInput.value.length} characters`;
+        });
+    </script>
+
+</body>
+</html>
