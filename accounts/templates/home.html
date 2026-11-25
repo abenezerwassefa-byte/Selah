@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Selah — Worship, Without Distraction</title>
+
+    <meta name="description"
+          content="Create beautiful worship presentations from your lyrics with Selah.">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+
+        :root {
+            --background: #08070d;
+            --surface: #100e19;
+            --surface-light: #171323;
+            --purple: #8b5cf6;
+            --purple-light: #a78bfa;
+            --white: #f8f7fc;
+            --muted: #9993a8;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--background);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            height: 85px;
+            padding: 0 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 5px;
+        }
+
+        .logo span {
+            color: var(--purple-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 14px;
+        }
+
+        .login-link {
+            color: var(--muted);
+        }
+
+        .signup-button {
+            padding: 12px 23px;
+            background: var(--purple);
+            border-radius: 7px;
+            color: white;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .signup-button:hover {
+            background: #7441df;
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 690px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 650px;
+            height: 450px;
+            background: rgba(124, 58, 237, 0.16);
+            filter: blur(140px);
+            border-radius: 50%;
+            top: -130px;
+            z-index: -1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 17px;
+            border: 1px solid rgba(167,139,250,0.25);
+            border-radius: 30px;
+            color: var(--purple-light);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--purple-light);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(45px, 7vw, 82px);
+            font-weight: 500;
+            line-height: 1.12;
+            max-width: 900px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--purple-light);
+        }
+
+        .hero-description {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.9;
+            max-width: 610px;
+            margin-bottom: 38px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .primary-button {
+            padding: 16px 30px;
+            background: var(--purple);
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .primary-button:hover {
+            background: #7441df;
+            transform: translateY(-3px);
+        }
+
+        .secondary-button {
+            padding: 16px 30px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            font-size: 14px;
+            color: var(--muted);
+            transition: 0.25s;
+        }
+
+        .secondary-button:hover {
+            border-color: var(--purple);
+            color: white;
+        }
+
+        .hero-note {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #716b80;
+            letter-spacing: 0.5px;
+        }
+
+        /* PRESENTATION PREVIEW */
+
+        .preview-section {
+            padding: 20px 8% 120px;
+        }
+
+        .preview {
+            max-width: 1000px;
+            margin: auto;
+            background: #0e0c16;
+            border: 1px solid rgba(167,139,250,0.2);
+            border-radius: 13px;
+            padding: 12px;
+            box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+        }
+
+        .preview-header {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 0 12px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #393345;
+        }
+
+        .preview-content {
+            min-height: 410px;
+            background:
+                radial-gradient(ellipse at center, #25173f 0%, #100d1b 65%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .preview-content small {
+            color: var(--purple-light);
+            font-size: 11px;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+
+        .preview-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 500;
+            line-height: 1.5;
+            max-width: 700px;
+        }
+
+        .preview-content p {
+            color: #a79bbd;
+            font-size: 12px;
+            margin-top: 35px;
+            letter-spacing: 2px;
+        }
+
+        /* GENERAL SECTION */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 65px;
+        }
+
+        .section-heading .label {
+            color: var(--purple-light);
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* FEATURES */
+
+        .features {
+            background: #0c0a12;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .feature-card {
+            padding: 35px 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(167,139,250,0.4);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(139,92,246,0.13);
+            color: var(--purple-light);
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* HOW IT WORKS */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(167,139,250,0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple-light);
+            margin: 0 auto 25px;
+            font-weight: 700;
+        }
+
+        .step h3 {
+            font-size: 17px;
+            margin-bottom: 13px;
+        }
+
+        .step p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* FINAL CTA */
+
+        .cta {
+            padding: 100px 20px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at center, #211438 0%, #08070d 70%);
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(35px, 5vw, 55px);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: var(--muted);
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 8%;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer p {
+            color: #716b80;
+            font-size: 12px;
+        }
+
+        .footer-brand {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+
+        .footer-brand span {
+            color: var(--purple-light);
+        }
+
+        /* RESPONSIVENESS */
+
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            nav {
+                padding: 0 5%;
+                height: 75px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-actions {
+                gap: 13px;
+                font-size: 12px;
+            }
+
+            .signup-button {
+                padding: 10px 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .primary-button,
+            .secondary-button {
+                width: 100%;
+                max-width: 260px;
+            }
+
+            .preview-section {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .preview-content {
+                min-height: 300px;
+                padding: 25px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <a href="/" class="logo">SELA<span>H</span></a>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+        </div>
+
+        <div class="nav-actions">
+            <a href="/accounts/login/" class="login-link">Sign In</a>
+            <a href="/accounts/register/" class="signup-button">Sign Up</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <main>
+        <section class="hero">
+
+            <div class="eyebrow">
+                Made for worship
+            </div>
+
+            <h1>
+                Let worship flow.<br>
+                <span>We'll handle the lyrics.</span>
+            </h1>
+
+            <p class="hero-description">
+                Beautiful worship presentations, without the unnecessary
+                complexity. Turn your lyrics into clear, organized slides
+                and keep the focus where it belongs.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="/accounts/register/" class="primary-button">
+                    Get Started &nbsp; →
+                </a>
+
+                <a href="#features" class="secondary-button">
+                    Discover Selah
+                </a>
+            </div>
+
+            <p class="hero-note">
+                A simpler way to prepare for worship.
+            </p>
+
+        </section>
+
+
+        <!-- PRESENTATION PREVIEW -->
+
+        <div class="preview-section">
+            <div class="preview">
+
+                <div class="preview-header">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+                <div class="preview-content">
+
+                    <small>SELAH / PRESENTATION</small>
+
+                    <h2>
+                        Great is Your faithfulness,<br>
+                        Your mercies never fail.
+                    </h2>
+
+                    <p>WORSHIP PRESENTATION</p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- FEATURES -->
+
+        <section class="features" id="features">
+
+            <div class="section-heading">
+
+                <div class="label">What Selah offers</div>
+
+                <h2>Everything you need.<br>Nothing you don't.</h2>
+
+                <p>
+                    Spend less time arranging slides and more time preparing
+                    for meaningful worship.
+                </p>
+
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">✦</div>
+
+                    <h3>Intelligent Slide Organization</h3>
+
+                    <p>
+                        Organize worship lyrics into readable presentation
+                        slides, with attention to sentence structure,
+                        meaning, and musical flow.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">▤</div>
+
+                    <h3>Beautiful Presentations</h3>
+
+                    <p>
+                        Create clean, distraction-free slides designed
+                        to make lyrics easy to read during live worship.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">↓</div>
+
+                    <h3>PowerPoint Export</h3>
+
+                    <p>
+                        Generate and download presentation files that
+                        you can use with your existing presentation setup.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section id="how-it-works">
+
+            <div class="section-heading">
+
+                <div class="label">Simple by design</div>
+
+                <h2>From lyrics to presentation.</h2>
+
+                <p>
+                    A straightforward process that takes the unnecessary
+                    work out of preparing worship slides.
+                </p>
+
+            </div>
+
+            <div class="steps">
+
+                <div class="step">
+
+                    <div class="step-number">01</div>
+
+                    <h3>Submit Your Lyrics</h3>
+
+                    <p>
+                        Paste your worship lyrics into Selah.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-number">02</div>
+
+                    <h3>Organize Your Slides</h3>
+
+                    <p>
+                        Let Selah help structure your lyrics into
+                        presentation-ready slides.
+                    </p>
+
+                </div>
+
+                <div class="step">
+
+                    <div class="step-number">03</div>
+
+                    <h3>Generate and Download</h3>
+
+                    <p>
+                        Generate your presentation and download
+                        your PowerPoint file.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="features" id="about">
+
+            <div class="section-heading">
+
+                <div class="label">The idea behind Selah</div>
+
+                <h2>Technology in service of worship.</h2>
+
+                <p>
+                    Selah is built around a simple idea: technology should
+                    remove distractions, not introduce new ones.
+                    It helps worship teams prepare their presentations
+                    so they can give their attention to what matters.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL CTA -->
+
+        <section class="cta">
+
+            <h2>Make room for what matters.</h2>
+
+            <p>
+                Start preparing your worship presentations with Selah.
+            </p>
+
+            <a href="/accounts/register/" class="primary-button">
+                Create Your Account &nbsp; →
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <a href="/" class="footer-brand">SELA<span>H</span></a>
+
+        <p>© 2026 Selah. Built for worship.</p>
+
+        <p>Less distraction. More focus.</p>
+
+    </footer>
+
+</body>
+</html>
